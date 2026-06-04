@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>URL Shortener</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+</head>
+<body>
+
+  <div class="container">
+    <h1>🔗 URL Shortener</h1>
+    <p class="subtitle">Paste a long URL and get a short one instantly</p>
+
+    <div class="input-group">
+      <input type="text" id="urlInput" placeholder="https://example.com/very/long/url..." />
+      <button onclick="shortenURL()">Shorten</button>
+    </div>
+
+    <div id="result" class="result hidden"></div>
+
+    <h2>All Shortened URLs</h2>
+    <div class="table-wrapper">
+      <table id="urlTable">
+        <thead>
+          <tr>
+            <th>Original URL</th>
+            <th>Short Link</th>
+            <th>Clicks</th>
+            <th>Created</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="urlTableBody">
+          {% for url in urls %}
+          <tr id="row-{{ url.id }}">
+            <td class="original-url">
+              <a href="{{ url.original_url }}" target="_blank">{{ url.original_url[:60] }}{% if url.original_url|length > 60 %}...{% endif %}</a>
+            </td>
+            <td>
+              <a href="/{{ url.short_code }}" target="_blank">localhost:5000/{{ url.short_code }}</a>
+            </td>
+            <td>{{ url.clicks }}</td>
+            <td>{{ url.created_at.strftime('%Y-%m-%d') }}</td>
+            <td>
+              <button class="delete-btn" onclick="deleteURL({{ url.id }})">Delete</button>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
