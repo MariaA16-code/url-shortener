@@ -1,17 +1,21 @@
 # URL Shortener
 
-A simple URL shortener built with Flask + MySQL.
+## Overview
+Built this to learn how URL routing and database lookups work together 
+in a backend application.
+
+## Tech Stack
+- Python, Flask
+- MySQL, SQLAlchemy
+- HTML, CSS, JavaScript
 
 ## Features
 - Shorten any URL
 - Click tracking
-- Delete URLs
-- Clean dark UI
+- Delete links
 
-## Setup
+## Run Locally
 ```bash
 pip install -r requirements.txt
 python app.py
 ```
-
-Visit `http://localhost:5000`
