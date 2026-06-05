@@ -3,12 +3,14 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import string
 import random
+import os
 
 app = Flask(__name__)
 
 # Database config
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:M%40riaSQL%2189@localhost/url_shortener'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
 
 db = SQLAlchemy(app)
 
