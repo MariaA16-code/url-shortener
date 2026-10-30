@@ -38,7 +38,7 @@
               <a href="{{ url.original_url }}" target="_blank">{{ url.original_url[:60] }}{% if url.original_url|length > 60 %}...{% endif %}</a>
             </td>
             <td>
-              <a href="/{{ url.short_code }}" target="_blank">localhost:5000/{{ url.short_code }}</a>
+              <a href="/{{ url.short_code }}" target="_blank">{{ request.host }}/{{ url.short_code }}</a>
             </td>
             <td>{{ url.clicks }}</td>
             <td>{{ url.created_at.strftime('%Y-%m-%d') }}</td>
