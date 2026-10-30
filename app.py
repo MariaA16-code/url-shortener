@@ -11,9 +11,9 @@ load_dotenv()
 app = Flask(__name__)
 
 # Database config
+import re
 uri = os.environ.get("DATABASE_URL", "sqlite:///local.db")
-if uri.startswith("postgres://"):
-    uri = uri.replace("postgres://", "postgresql://", 1)
+uri = re.sub(r"^postgres(ql)?(\+\w+)?://", "postgresql+psycopg2://", uri)
 
 app.config["SQLALCHEMY_DATABASE_URI"] = uri
 app.config["SQLALCHEMY_ENGINE_OPTIONS"] = {"pool_pre_ping": True}
