@@ -1,13 +1,14 @@
 # URL Shortener
 
 ## Overview
-Built this to learn how URL routing and database lookups work together 
+Built this to learn how URL routing and database lookups work together
 in a backend application.
 
 ## Tech Stack
 - Python, Flask
-- MySQL, SQLAlchemy
+- PostgreSQL (Supabase), SQLAlchemy
 - HTML, CSS, JavaScript
+- Deployed on Render
 
 ## Features
 - Shorten any URL
@@ -17,7 +18,20 @@ in a backend application.
 ## Run Locally
 ```bash
 pip install -r requirements.txt
+```
+
+Create a `.env` file in the project folder:
+```
+DATABASE_URL=your_postgresql_connection_string
+```
+
+Then run:
+```bash
 python app.py
 ```
+Without `DATABASE_URL`, the app falls back to a local SQLite database.
+
 ## Live demo
-view on Railway (https://angelic-renewal-production-9780.up.railway.app/)
+View on Render: https://url-shortener-1yb1.onrender.com
+
+Note: hosted on a free tier, so the first load after inactivity can take about 30 to 60 seconds.
